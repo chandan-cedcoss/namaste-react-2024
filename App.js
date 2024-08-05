@@ -1,4 +1,5 @@
-// the basic/core code format of react further we can make it simple using JSX.
+import React from "react";
+import ReactDOM from "react-dom/client";
 
 const parent = React.createElement("div", { id: "parent" }, [
   React.createElement("div", { id: "child1" }, [

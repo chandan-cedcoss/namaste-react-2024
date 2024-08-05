@@ -1,0 +1,26 @@
+{
+  "name": "namaste-react-2024",
+  "version": "1.0.0",
+  "description": "This is the complete react tutorial.",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/chandan-cedcoss/namaste-react-2024.git"
+  },
+  "author": "Chandan Pandey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chandan-cedcoss/namaste-react-2024/issues"
+  },
+  "homepage": "https://github.com/chandan-cedcoss/namaste-react-2024#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
