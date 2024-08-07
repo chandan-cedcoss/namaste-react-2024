@@ -35,10 +35,28 @@
     border: 1px solid black;
 }
 
-.search {
-    padding: 10px;
-}
-
 .res-logo {
     width: 200px;
+}
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.shimmer-card {
+    width: 200px;
+    height: 400px;
+    background-color: #8a8888;
+    margin: 10px;
+}
+
+.action-btn {
+    padding: 0px 20px;
+    cursor: pointer;
+}
+.filter {
+    display: flex;
+    margin: 10px;
+    padding: 10px;
 }
