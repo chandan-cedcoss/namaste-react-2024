@@ -2,6 +2,7 @@ import RestarauntCard from "./RestarauntCard";
 // import resObj from "../utils/mockData";
 import { useState,useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
     const [restarauntList,setRestarauntList] = useState([]);
@@ -33,7 +34,7 @@ const Body = () => {
                     <button onClick={() => {
                         const filteredRestarauntList = restarauntList.filter((res) => res.info.name.toLowerCase().includes(seachValue.toLowerCase()))
                         SetRestarauntFilteredList(filteredRestarauntList);
-                    }}>Search</button>
+                    }}>Search</button> 
                 </div>
                 <button className="res-btn" onClick= {() =>{
                     const filteredList = restarauntList.filter( (res) => res.info.avgRating > 4.3);
@@ -41,7 +42,7 @@ const Body = () => {
                 }}>Top Rated Restaraunts</button>
             </div>
             <div className="res-container">
-                {restarauntFilteredList.map((restaraunt, index) => <RestarauntCard key={restaraunt.info.id} resData={restaraunt} />)}
+                {restarauntFilteredList.map((restaraunt, index) => <Link to={'restaurant/' + restaraunt.info.id} key={restaraunt.info.id}><RestarauntCard  resData={restaraunt} /></Link>)}
             </div>
         </div>
     )
