@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,12 +7,30 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
+import appStore from "./utils/appStore";
+import { Provider } from "react-redux";
+
+const About = lazy(() => import('./components/About'));
 
 const AppLayout = () => {
-    return (<div className="appLayout">
-        <Header />
-        <Outlet />
-    </div>)
+    console.log(UserContext);
+    const [userName, SetUserName] = useState();
+    useEffect(() => {
+        const userInfo = {
+            name: "Chandan Pandey"
+        }
+        SetUserName(userInfo.name);
+    }, []);
+    return (
+        <div className="appLayout">
+            <Provider store={appStore}>
+            <UserContext.Provider value={{ loggedInUser: userName, SetUserName }}>
+                <Header />
+            </UserContext.Provider>
+            <Outlet />
+            </Provider>
+        </div>)
 }
 
 const appRouter = createBrowserRouter([
@@ -25,18 +43,18 @@ const appRouter = createBrowserRouter([
                 element: <Body />
             },
             {
-            path: '/about',
-            element: <About />
-        },
-        {
-            path: '/contact',
-            element: <Contact />
-        },
-        {
-            path: '/restaurant/:resId',
-            element: <RestaurantMenu />
-        }
-    ],
+                path: '/about',
+                element: <Suspense><About /></Suspense>
+            },
+            {
+                path: '/contact',
+                element: <Contact />
+            },
+            {
+                path: '/restaurant/:resId',
+                element: <RestaurantMenu />
+            }
+        ],
         errorElement: <Error />
     }
 ])
